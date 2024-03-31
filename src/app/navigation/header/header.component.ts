@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+
+  searchForm = new FormGroup({
+    searchInput: new FormControl(''),
+    priceFilter: new FormControl(''),
+  });
+
+  constructor() {
+    this.searchForm.valueChanges.subscribe((value: any) => {
+      console.log(value);
+    });
+  }
+  
+  onSubmit() {
+    console.log(this.searchForm.value);
+  }
 }

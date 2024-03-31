@@ -56,3 +56,12 @@
       float: none;
     }
   }
+
+  .search {
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #dececf;
+  }
