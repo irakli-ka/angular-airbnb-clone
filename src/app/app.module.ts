@@ -8,11 +8,11 @@ import { RegistrationComponent } from './pages/user/registration/registration.co
 import { LoginComponent } from './pages/user/login/login.component';
 import { UserPgComponent } from './pages/user/user-pg/user-pg.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     RegistrationComponent,
     LoginComponent,
     UserPgComponent
@@ -20,7 +20,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NavigationModule
+    NavigationModule,
+    HomeModule
   ],
   providers: [
     provideAnimationsAsync()
