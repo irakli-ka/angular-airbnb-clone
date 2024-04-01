@@ -1,5 +1,4 @@
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
@@ -8,9 +7,17 @@
     <div class="header">
         <a href="/" class="logo"><img src="assets\airbnb_logo.png"></a>
         <div class="header-right">
+            <div class="user-menu">
+                <button mat-button [matMenuTriggerFor]="menu"><i class="fa fa-user fa-2x"></i></button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item *ngIf="!isLoggedIn" [routerLink]="['/login']">Login</button>
+                    <button mat-menu-item *ngIf="!isLoggedIn" [routerLink]="['/register']">Sign Up</button>
+                    <button mat-menu-item *ngIf="isLoggedIn" [routerLink]="['/user']">Account</button>
+                </mat-menu>
+            </div>
             <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
                 <mat-form-field class="search-field">
-                    <input matInput placeholder="Search" type="text" formControlName="searchInput" class="">
+                    <input matInput placeholder="Search" type="text" formControlName="searchInput" class="search-input">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Sort by price</mat-label>
@@ -21,8 +28,9 @@
                         <mat-option value="high">High to Low</mat-option>
                     </mat-select>
                   </mat-form-field>
-                <button mat-raised-button color="primary" class="searchbtn" type="submit" >Search</button>
+                <button mat-raised-button color="primary" class="search-btn" type="submit" >Search</button>
             </form>
+
         </div>
       </div>
 </header>

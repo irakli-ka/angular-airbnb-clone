@@ -8,11 +8,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class HeaderComponent {
 
-
   searchForm = new FormGroup({
     searchInput: new FormControl(''),
     priceFilter: new FormControl(''),
   });
+
+  isLoggedIn: any = false;
 
   constructor() {
     this.searchForm.valueChanges.subscribe((value: any) => {
