@@ -19,15 +19,58 @@
                 <mat-form-field class="search-field">
                     <input matInput placeholder="Search" type="text" formControlName="searchInput" class="search-input">
                 </mat-form-field>
-                <mat-form-field>
+                <button mat-button (click)="onAdvancedSearch()">Advanced Search</button>
+
+                <div *ngIf="showAdvancedSearch">
+                  <mat-form-field>
                     <mat-label>Sort by price</mat-label>
                     <mat-select>
-                        <!--TODO price range (slider?), type of place, rooms and beds,-->
-                        <!--TODO beds, bathrooms, property type, amenities, host language -->
-                        <mat-option value="low">Low to High</mat-option>
-                        <mat-option value="high">High to Low</mat-option>
+                      <mat-option value="low">Low to High</mat-option>
+                      <mat-option value="high">High to Low</mat-option>
                     </mat-select>
                   </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Rooms</mat-label>
+                        <input matInput type="number" placeholder="Rooms" formControlName="rooms">  
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Beds</mat-label>
+                        <input matInput type="number" placeholder="Beds" formControlName="beds">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Bathrooms</mat-label>
+                        <input matInput type="number" placeholder="Bathrooms" formControlName="bathrooms">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Property Type</mat-label>
+                        <mat-select formControlName="propertyType" multiple>
+                            <mat-option value="house">House</mat-option>
+                            <mat-option value="apartment">Apartment</mat-option>
+                            <mat-option value="cabin">Cabin</mat-option>
+                            <mat-option value="villa">Villa</mat-option>
+                            <mat-option value="hotel">Hotel</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Amenities</mat-label>
+                        <mat-select formControlName="amenities" multiple>
+                            <mat-option value="wifi">Wifi</mat-option>
+                            <mat-option value="parking">Parking</mat-option>
+                            <mat-option value="pool">Pool</mat-option>
+                            <mat-option value="kitchen">Kitchen</mat-option>
+                            <mat-option value="tv">TV</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Host Language</mat-label>
+                        <mat-select formControlName="hostLanguage" multiple>
+                            <mat-option value="english">English</mat-option>
+                            <mat-option value="spanish">Spanish</mat-option>
+                            <mat-option value="french">French</mat-option>
+                            <mat-option value="german">German</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
                 <button mat-raised-button color="primary" class="search-btn" type="submit" >Search</button>
             </form>
 

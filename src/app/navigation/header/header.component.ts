@@ -1,27 +1,44 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  searchForm: FormGroup = new FormGroup({});
 
-  searchForm = new FormGroup({
-    searchInput: new FormControl(''),
-    priceFilter: new FormControl(''),
-  });
-
+  showAdvancedSearch = false;
   isLoggedIn: any = false;
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.searchForm = this.formBuilder.group({
+      searchInput: [''],
+      priceRange: [''],
+      rooms: [''],
+      beds: [''],
+      bathrooms: [''],
+      propertyType: [''],
+      amenities: [''],
+      hostLanguage: ['']
+    });
+
     this.searchForm.valueChanges.subscribe((value: any) => {
       console.log(value);
     });
   }
-  
+
+  onAdvancedSearch() {
+    this.showAdvancedSearch = !this.showAdvancedSearch;
+  }
+
   onSubmit() {
     console.log(this.searchForm.value);
+    if (this.searchForm.valid) {
+      // Perform the search...
+    }
   }
 }
