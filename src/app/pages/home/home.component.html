@@ -7,18 +7,20 @@
   <h2>Most Requested Hotels</h2>
   <div class="hotel-row">
     <div *ngFor="let hotel of mostRequestedHotels" class="hotel-card">
+      <a [routerLink]="['/hotel', hotel.id]">
         <mat-card class="hotel-card">
-            <img mat-card-image [src]="hotel.image">
-            <mat-card-content>
-                <mat-card-title>{{ hotel.location }}</mat-card-title>
-                <p>{{ hotel.price }}$ night</p>
-            </mat-card-content>
-          </mat-card>
+          <img mat-card-image [src]="hotel.image">
+          <mat-card-content>
+            <mat-card-title>{{ hotel.location }}</mat-card-title>
+            <p>{{ hotel.price }}$ night</p>
+          </mat-card-content>
+        </mat-card>
+      </a>
     </div>
   </div>
   <h2>Hotels by Most Requested Regions</h2>
   <div class="hotel-row">
-    <div *ngFor="let hotel of mostRequestedHotels" class="hotel-card">
+    <div *ngFor="let hotel of mostRequestedRegions" class="hotel-card">
         <mat-card class="hotel-card">
             <img mat-card-image [src]="hotel.image">
             <mat-card-content>

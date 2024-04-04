@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-airbnb-clone-3692d": {
+      "hosting": {
+        "angular-airbnb-clone": [
+          "angular-airbnb-clone-3692d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-airbnb-clone-3692d"
+  }
+}

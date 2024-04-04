@@ -100,6 +100,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "angular-airbnb-clone:build:production",
+              "serveTarget": "angular-airbnb-clone:serve:production"
+            },
+            "development": {
+              "buildTarget": "angular-airbnb-clone:build:development",
+              "serveTarget": "angular-airbnb-clone:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

@@ -9,9 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button'; 
 
 
-
-
-
 @NgModule({
   declarations: [
     LoginComponent,
@@ -24,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatButtonModule
+
   ]
 })
 export class UserModule { }

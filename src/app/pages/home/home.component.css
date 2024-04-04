@@ -45,4 +45,9 @@ h2, p, mat-card-title {
     margin-top: 30px;
   }
 
+  .hotel-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   

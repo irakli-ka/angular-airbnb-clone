@@ -1,1 +1,39 @@
-<p>user-pg works!</p>
+<div class="user-info">
+    <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Card Number" formControlName="cardNumber">
+        </mat-form-field>
+
+        <button mat-button (click)="onChangePassword()">
+            {{ userInfoForm.get('changePassword')?.value ? 'Cancel' : 'Change Password' }}
+          </button>
+      
+          <div *ngIf="userInfoForm.get('changePassword')?.value">
+            <mat-form-field>
+              <input matInput placeholder="New Password" formControlName="password" type="password">
+            </mat-form-field>
+      
+            <mat-form-field>
+              <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password">
+            </mat-form-field>
+          </div>
+      
+          <button mat-raised-button color="primary" type="submit">Update</button>
+        </form>
+      </div>
