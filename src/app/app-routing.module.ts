@@ -5,12 +5,14 @@ import { RegistrationComponent } from './pages/user/registration/registration.co
 import { LoginComponent } from './pages/user/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HotelPgComponent } from './pages/hotel-pg/hotel-pg.component';
+import { TripPgComponent } from './pages/trip-pg/trip-pg.component';
 
 const routes: Routes = [
   { path: 'user', component: UserPgComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent},
   { path: 'hotel/:id', component: HotelPgComponent},
+  { path: 'trip', component: TripPgComponent},
   { path: '', component: HomeComponent}
 ];
 

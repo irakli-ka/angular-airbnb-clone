@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   searchForm: FormGroup = new FormGroup({});
 
   showAdvancedSearch = false;
-  isLoggedIn: any = false;
+  isLoggedIn: any = true;
 
   constructor(private formBuilder: FormBuilder) { }
 

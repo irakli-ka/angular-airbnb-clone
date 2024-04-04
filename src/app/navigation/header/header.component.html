@@ -13,6 +13,8 @@
                     <button mat-menu-item *ngIf="!isLoggedIn" [routerLink]="['/login']">Login</button>
                     <button mat-menu-item *ngIf="!isLoggedIn" [routerLink]="['/register']">Sign Up</button>
                     <button mat-menu-item *ngIf="isLoggedIn" [routerLink]="['/user']">Account</button>
+                    <button mat-menu-item *ngIf="isLoggedIn" [routerLink]="['/trip']">My trip</button>
+
                 </mat-menu>
             </div>
             <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
