@@ -1,15 +1,18 @@
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+</head>
 <div class="container">
   <h2>Most Requested Hotels</h2>
   <div class="hotel-row">
     <div *ngFor="let hotel of mostRequestedHotels" class="hotel-card">
-      <a [routerLink]="['/hotel', hotel.id]">
+      <a [routerLink]="['/hotel', hotel.name.replace(' ', '-')]">
         <mat-card class="hotel-card">
-          <img mat-card-image [src]="hotel.image">
+          <img mat-card-image [src]="hotel.image" />
           <mat-card-content>
             <mat-card-title>{{ hotel.location }}</mat-card-title>
             <p>{{ hotel.price }}$ night</p>
@@ -21,17 +24,15 @@
   <h2>Hotels by Most Requested Regions</h2>
   <div class="hotel-row">
     <div *ngFor="let hotel of mostRequestedRegions" class="hotel-card">
+      <a [routerLink]="['/hotel', hotel.name.replace(' ', '-')]">
         <mat-card class="hotel-card">
-            <img mat-card-image [src]="hotel.image">
-            <mat-card-content>
-                <mat-card-title>{{ hotel.location }}</mat-card-title>
-                <p>{{ hotel.price }}$ night</p>
-            </mat-card-content>
-          </mat-card>
+          <img mat-card-image [src]="hotel.image" />
+          <mat-card-content>
+            <mat-card-title>{{ hotel.location }}</mat-card-title>
+            <p>{{ hotel.price }}$ night</p>
+          </mat-card-content>
+        </mat-card>
+      </a>
     </div>
   </div>
 </div>
-
-
-
-  

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'user', component: UserPgComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'hotel/:id', component: HotelPgComponent},
+  { path: 'hotel/:name', component: HotelPgComponent},
   { path: 'trip', component: TripPgComponent},
   { path: '', component: HomeComponent}
 ];
