@@ -21,7 +21,7 @@
                 <mat-form-field class="search-field">
                     <input matInput placeholder="Search" type="text" formControlName="searchInput" class="search-input">
                 </mat-form-field>
-                <button mat-button (click)="onAdvancedSearch()">Advanced Search</button>
+                <button mat-button (click)="onAdvancedSearch()">{{ showAdvancedSearch ? 'Close options' : 'Advanced Search' }}</button>
 
                 <div *ngIf="showAdvancedSearch">
                   <mat-form-field>
