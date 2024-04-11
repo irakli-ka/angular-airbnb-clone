@@ -22,7 +22,7 @@
                     <input matInput placeholder="Search" type="text" formControlName="searchInput" class="search-input">
                 </mat-form-field>
                 <button mat-button (click)="onAdvancedSearch()">{{ showAdvancedSearch ? 'Close options' : 'Advanced Search' }}</button>
-
+                <!-- TODO maybe download and load icons from assets -->
                 <div *ngIf="showAdvancedSearch">
                   <mat-form-field>
                     <mat-label>Sort by price</mat-label>

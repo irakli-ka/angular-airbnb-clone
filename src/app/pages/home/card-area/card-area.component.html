@@ -1,0 +1,14 @@
+<div class="hotel-row">
+  <div *ngFor="let hotel of Hotels | slice:0:limit" class="hotel-card">
+      <a [routerLink]="['/hotel', hotel.name.replace(' ', '-')]">
+        <mat-card class="hotel-card">
+          <img mat-card-image [src]="hotel.image" />
+          <mat-card-content>
+            <mat-card-title>{{ hotel.location }}</mat-card-title>
+            <p>{{ hotel.price }}$ night</p>
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </div>
+  </div>
+  <button mat-button color="warn" (click)="onSeeMore()" *ngIf="limit < Hotels.length">See More</button>

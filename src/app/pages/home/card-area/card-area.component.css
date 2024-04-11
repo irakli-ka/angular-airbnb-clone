@@ -1,0 +1,53 @@
+.hotel-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.hotel-card {
+    max-width: 400px;
+    border-radius: 5px;
+    flex: 0 0 calc(100% - 10px); /* This means the card will not shrink or grow, and its base size is 100% of the container minus 10px. Adjust this value as needed. */
+    margin: 3px; 
+}
+
+@media (min-width: 600px) {
+    .hotel-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .hotel-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media (min-width: 900px) {
+    .hotel-row {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .hotel-card {
+        flex: 0 0 calc(20% - 10px);
+    }
+}
+
+.hotel-card p {
+    font-size: 16px;
+}
+
+.hotel-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.hotel-card a {
+    text-decoration: none;
+    color: inherit;
+}

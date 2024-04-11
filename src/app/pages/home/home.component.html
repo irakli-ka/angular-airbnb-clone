@@ -8,31 +8,9 @@
 </head>
 <div class="container">
   <h2>Most Requested Hotels</h2>
-  <div class="hotel-row">
-    <div *ngFor="let hotel of mostRequestedHotels" class="hotel-card">
-      <a [routerLink]="['/hotel', hotel.name.replace(' ', '-')]">
-        <mat-card class="hotel-card">
-          <img mat-card-image [src]="hotel.image" />
-          <mat-card-content>
-            <mat-card-title>{{ hotel.location }}</mat-card-title>
-            <p>{{ hotel.price }}$ night</p>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-  </div>
+  <app-card-area [Hotels]="mostRequestedHotels"></app-card-area>
+
   <h2>Hotels by Most Requested Regions</h2>
-  <div class="hotel-row">
-    <div *ngFor="let hotel of mostRequestedRegions" class="hotel-card">
-      <a [routerLink]="['/hotel', hotel.name.replace(' ', '-')]">
-        <mat-card class="hotel-card">
-          <img mat-card-image [src]="hotel.image" />
-          <mat-card-content>
-            <mat-card-title>{{ hotel.location }}</mat-card-title>
-            <p>{{ hotel.price }}$ night</p>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-  </div>
+  <app-card-area [Hotels]="mostRequestedRegions"></app-card-area>
+  
 </div>
