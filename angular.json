@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-airbnb-clone": {
+    "Angular-airbnb-clone": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-airbnb-clone:build:production"
+              "buildTarget": "Angular-airbnb-clone:build:production"
             },
             "development": {
-              "buildTarget": "angular-airbnb-clone:build:development"
+              "buildTarget": "Angular-airbnb-clone:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-airbnb-clone:build"
+            "buildTarget": "Angular-airbnb-clone:build"
           }
         },
         "test": {
@@ -100,23 +100,6 @@
             ],
             "scripts": []
           }
-        },
-        "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {
-            "version": 2
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "angular-airbnb-clone:build:production",
-              "serveTarget": "angular-airbnb-clone:serve:production"
-            },
-            "development": {
-              "buildTarget": "angular-airbnb-clone:build:development",
-              "serveTarget": "angular-airbnb-clone:serve:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       }
     }

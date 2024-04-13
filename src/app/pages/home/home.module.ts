@@ -4,14 +4,15 @@ import { HomeComponent } from './home.component';
 import { MatCardModule } from '@angular/material/card'; 
 import { RouterModule } from '@angular/router';
 import { CardAreaComponent } from './card-area/card-area.component';
-import { MatButtonModule } from '@angular/material/button'; 
-
+import { MatButtonModule } from '@angular/material/button';
+import { CarouselComponent } from './card-area/carousel/carousel.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    CardAreaComponent
+    CardAreaComponent,
+    CarouselComponent
   ],
   imports: [
     CommonModule,
