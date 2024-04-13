@@ -20,7 +20,6 @@ ngOnInit() {
         ...hotel.images.map(image => image.url), 
         ...hotel.rooms.flatMap(room => room.roomImages.map(image => image.url))
       ];
-      console.log('All Images:', allImages);
       const updatedHotel = {
         ...hotel,
         allImages: allImages
