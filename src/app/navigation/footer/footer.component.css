@@ -8,6 +8,7 @@
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 30px;
+    height: 100%;
   }
 
   .site-footer hr {
@@ -37,9 +38,6 @@
   }
   .footer-links li {
     display: block;
-  }
-  .footer-links a {
-    color: #737373;
   }
   .footer-links a:active,
   .footer-links a:focus,
@@ -133,7 +131,7 @@
     background-color: #E1306C;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 760px) {
     .social-icons li.title {
       display: block;
       margin-right: 0;
