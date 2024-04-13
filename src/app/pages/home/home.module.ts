@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { CardAreaComponent } from './card-area/card-area.component';
 import { MatButtonModule } from '@angular/material/button';
 import { CarouselComponent } from './card-area/carousel/carousel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CarouselComponent } from './card-area/carousel/carousel.component';
     CommonModule,
     MatCardModule,
     RouterModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   exports: [
     HomeComponent

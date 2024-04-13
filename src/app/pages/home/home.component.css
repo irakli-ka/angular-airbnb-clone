@@ -1,6 +1,7 @@
 .container {
     padding-left: 50px;
     padding-right: 50px;
+    border-top: 3px solid rgb(150, 150, 150);
 }
 
 h2, p, mat-card-title {

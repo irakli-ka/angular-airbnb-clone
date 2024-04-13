@@ -1,12 +1,15 @@
 <div class="hotel-row">
-  <div *ngFor="let hotel of Hotels | slice:0:limit" class="hotel-card">
-      <mat-card class="hotel-card">
-          <app-carousel [images]="images" ></app-carousel>
-        <mat-card-content class="clickable-content" [routerLink]="['/hotel', hotel.name.replace(' ', '-')]">
-          <mat-card-title>{{ hotel.location }}</mat-card-title>
-          <p>{{ hotel.price }}$ night</p>
-        </mat-card-content>
-      </mat-card>
+  <div *ngFor="let hotel of allHotels | slice:0:limit" class="hotel-card">
+    <mat-card class="hotel-card">
+      <app-carousel [hotel]="hotel"></app-carousel>        
+      <mat-card-content class="clickable-content" [routerLink]="['/hotel', hotel.name?.replace(' ', '-')]">
+        <mat-card-title>{{ hotel.name }}</mat-card-title>
+        <p>{{ hotel.address?.country }} / {{ hotel.address?.city }} / {{ hotel.address?.state }}</p>
+        <p *ngFor="let room of hotel.rooms; let i = index" >
+          room {{ i + 1 }} - {{ room.pricePerNight }}$/night
+        </p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
-<button mat-button color="warn" (click)="onSeeMore()" *ngIf="limit < Hotels.length">See More</button>
+<button mat-button color="warn" (click)="onSeeMore()" *ngIf="limit < allHotels.length">See More</button>

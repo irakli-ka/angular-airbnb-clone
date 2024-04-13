@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Hotel } from '../../../shared/models/Hotel.model';
+import { Image } from '../../../shared/models/Image.model';
 
 @Component({
   selector: 'app-card-area',
@@ -6,16 +8,17 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card-area.component.css',
 })
 export class CardAreaComponent {
-  limit: any = 5;
+  limit: any = 10;
 
+  @Input() allHotels: Hotel[] = [];
 
-  @Input() Hotels: any[] = [];
-
-  images = ['https://picsum.photos/300', 'https://picsum.photos/301', 'https://picsum.photos/302']
 
   constructor () {}
+
 
   onSeeMore() {
     this.limit += 5;
   }
+
+
 }
