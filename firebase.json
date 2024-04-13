@@ -1,9 +1,0 @@
-{
-  "hosting": [
-    {
-      "target": "angular-airbnb-clone",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
-}
