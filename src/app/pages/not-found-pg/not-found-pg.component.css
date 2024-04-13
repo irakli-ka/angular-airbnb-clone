@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f6f6f6;
+    font-family: 'Arial', sans-serif;
+}
+.error-container {
+    text-align: center;
+}
+.error-container h1 {
+    font-size: 3em;
+    color: #0e0e0e;
+}
+.error-container p {
+    color: #9b9b9b;
+}

@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/user/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HotelPgComponent } from './pages/hotel-pg/hotel-pg.component';
 import { TripPgComponent } from './pages/trip-pg/trip-pg.component';
+import { NotFoundPgComponent } from './pages/not-found-pg/not-found-pg.component';
 
 const routes: Routes = [
   { path: 'user', component: UserPgComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'hotel/:name', component: HotelPgComponent},
   { path: 'trip', component: TripPgComponent},
-  { path: '', component: HomeComponent}
+  { path: '', component: HomeComponent},
+  { path: '**', component: NotFoundPgComponent}
 ];
 
 @NgModule({

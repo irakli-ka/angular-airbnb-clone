@@ -9,6 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HotelPgComponent } from './pages/hotel-pg/hotel-pg.component';
 import { TripPgComponent } from './pages/trip-pg/trip-pg.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundPgComponent } from './pages/not-found-pg/not-found-pg.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     HotelPgComponent,
     TripPgComponent,
+    NotFoundPgComponent,
   ],
   imports: [
     BrowserModule,
