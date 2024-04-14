@@ -2,11 +2,14 @@
   <div *ngFor="let hotel of allHotels | slice:0:limit" class="hotel-card">
     <mat-card class="hotel-card">
       <app-carousel [hotel]="hotel"></app-carousel>        
-      <mat-card-content class="clickable-content" [routerLink]="['/hotel', hotel.name?.replace(' ', '-')]">
-        <mat-card-title>{{ hotel.name }}</mat-card-title>
+      <mat-card-content class="clickable-content" [routerLink]="['/hotel', hotel.name?.replace(' ', '-'), hotel.id]">
+        <mat-card-title class="title-container">
+          <span>{{ hotel.name }}</span>
+          <span class="rating"><i class="fa fa-star"></i>{{ hotel.rating }}</span>
+        </mat-card-title>
         <p>{{ hotel.address?.country }} / {{ hotel.address?.city }} / {{ hotel.address?.state }}</p>
         <p *ngFor="let room of hotel.rooms; let i = index" >
-          room {{ i + 1 }} - {{ room.pricePerNight }}$/night
+          room {{ i + 1 }} - <b>${{ room.pricePerNight }}</b> night
         </p>
       </mat-card-content>
     </mat-card>

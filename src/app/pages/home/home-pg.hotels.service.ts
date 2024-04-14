@@ -5,15 +5,12 @@ import { Observable } from 'rxjs';
 import { BASEAPIURL } from '../../../environments/environments';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HomePgHotelsService {
+  constructor(private http: HttpClient) {}
 
-  
-  
-  constructor(private http: HttpClient) { }
-
-getAllHotels(): Observable<Hotel[]> {
-  return this.http.get<Hotel[]>(BASEAPIURL + '/get-all-hotels');
-}
+  getAllHotels(): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(BASEAPIURL + '/get-all-hotels');
+  }
 }

@@ -64,3 +64,11 @@
     background-color: #f5f5f5;
   }
 
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .rating {
+    margin-left: auto;
+  }

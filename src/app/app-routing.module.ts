@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'user', component: UserPgComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'hotel/:name', component: HotelPgComponent},
+  { path: 'hotel/:name/:id', component: HotelPgComponent},
   { path: 'trip', component: TripPgComponent},
   { path: '', component: HomeComponent},
   { path: '**', component: NotFoundPgComponent}

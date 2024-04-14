@@ -1,0 +1,32 @@
+.hotel-info {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .carousel {
+    flex: 0 0 50%;
+    padding-right: 20px;
+  }
+  
+  .description {
+    flex: 1;
+  }
+  
+  .rating {
+    font-size: 1.2em;
+    color: #f4d35e;
+  }
+  
+  .room {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }

@@ -107,4 +107,8 @@
     opacity: 0.8;
 }
 
+img:hover {
+    cursor: pointer;
+}
+
 

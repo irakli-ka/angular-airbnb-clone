@@ -1,14 +1,6 @@
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-</head>
 <div class="carousel-container">
-        <!-- <img *ngFor="let image of hotel?.allImages; let i=index"
-            [src]="image"
-            [ngClass]="{'image-active': selectedIndex === i}"
-            class="fade"
-        /> -->
         <div *ngFor="let image of hotel.allImages; let i = index">
-            <img *ngIf="i === selectedIndex" [src]="image" alt="Carousel image"
+            <img [routerLink]="['/hotel', this.hotel.name?.replace(' ', '-'), this.hotel.id]" *ngIf="i === selectedIndex" [src]="image" alt="Carousel image"
                 [ngClass]="{'image-active': selectedIndex === i}"
                 class="fade"
             />

@@ -13,6 +13,7 @@ import { NotFoundPgComponent } from './pages/not-found-pg/not-found-pg.component
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

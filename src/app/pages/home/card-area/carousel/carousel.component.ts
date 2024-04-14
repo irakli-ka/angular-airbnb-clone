@@ -44,7 +44,7 @@ export class CarouselComponent {
       totalSeconds: undefined,
     },
     owner: undefined,
-  };;
+  };
   @Input() indicators: boolean = true;
   @Input() controls: boolean = true;
 
