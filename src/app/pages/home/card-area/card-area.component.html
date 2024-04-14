@@ -1,7 +1,9 @@
 <div class="hotel-row">
   <div *ngFor="let hotel of allHotels | slice:0:limit" class="hotel-card">
     <mat-card class="hotel-card">
-      <app-carousel [hotel]="hotel"></app-carousel>        
+      <div class="carousel-container">
+        <app-carousel [hotel]="hotel"></app-carousel>        
+      </div>
       <mat-card-content class="clickable-content" [routerLink]="['/hotel', hotel.name?.replace(' ', '-'), hotel.id]">
         <mat-card-title class="title-container">
           <span>{{ hotel.name }}</span>

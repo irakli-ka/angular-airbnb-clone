@@ -6,18 +6,17 @@ import { NavigationModule } from './navigation/navigation.module';
 import { HomeModule } from './pages/home/home.module';
 import { UserModule } from './pages/user/user.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HotelPgComponent } from './pages/hotel-pg/hotel-pg.component';
 import { TripPgComponent } from './pages/trip-pg/trip-pg.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundPgComponent } from './pages/not-found-pg/not-found-pg.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HotelPgModule } from './pages/hotel-pg/hotel.pg.module'; 
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HotelPgComponent,
     TripPgComponent,
     NotFoundPgComponent,
   ],
@@ -27,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavigationModule,
     HomeModule,
     UserModule,
+    HotelPgModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],

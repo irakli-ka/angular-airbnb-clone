@@ -5,22 +5,22 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { CardAreaComponent } from './card-area/card-area.component';
 import { MatButtonModule } from '@angular/material/button';
-import { CarouselComponent } from './card-area/carousel/carousel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    CardAreaComponent,
-    CarouselComponent
+    CardAreaComponent
   ],
   imports: [
     CommonModule,
     MatCardModule,
     RouterModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   exports: [
     HomeComponent

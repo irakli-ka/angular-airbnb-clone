@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, input } from '@angular/core';
-import { Image } from '../../../../shared/models/Image.model';
-import { Hotel } from '../../../../shared/models/Hotel.model';
+import { Hotel } from '../../models/Hotel.model';
 
 @Component({
   selector: 'app-carousel',

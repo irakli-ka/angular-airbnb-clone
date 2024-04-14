@@ -1,12 +1,27 @@
 <div class="hotel-info">
-    <h1>{{ hotel?.name }}</h1>
-    <div class="rating">{{ hotel?.rating }} <i class="fa fa-star"></i></div>
-    <p>{{ hotel?.description }}</p>
+    <div class="info-header">
+        <div class="carousel-container">
+            <app-carousel [hotel]="hotel"></app-carousel>
+        </div>
+        <div class="description">
+            <h1>{{ hotel.name }}</h1>
+            <div class="rating">{{ hotel.rating }} <i class="fa fa-star"></i></div>
+            <p>{{ hotel.description }}</p>
+        </div>
+    </div>
     <h2>Address</h2>
-    <p>{{ hotel?.address?.country }} / {{ hotel?.address?.city }} / {{ hotel?.address?.state }}</p>
+    <p>{{ hotel.address?.country }} {{ hotel.address?.city }} {{ hotel.address?.state }}  {{ hotel.address?.street }}</p>
     <h2>Rooms</h2>
     <div *ngFor="let room of hotel?.rooms; let i = index" class="room">
-        <h3>Room {{ i + 1 }}</h3>
-        <p>${{ room.pricePerNight }} per night</p>
+        <h3 *ngIf="hotel.rooms.length > 1"> Room {{ i + 1 }}</h3>
+        <p>Type: {{ room.roomType }}</p>
+        <p>Max Occupancy: {{ room.maxOccupancy }}</p>
+        <p>Price: ${{ room.pricePerNight }} per night</p>
+        <p>Amenities: {{ room.amenities.join(', ') }}</p>
+        <div *ngIf="hotel.rooms.length > 1" class="room-images">
+            <img *ngFor="let image of room.roomImages" [src]="image.url" alt="Room image">
+        </div>
     </div>
 </div>
+
+

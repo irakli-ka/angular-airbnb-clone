@@ -10,11 +10,6 @@
     align-items: flex-start;
   }
   
-  .carousel {
-    flex: 0 0 50%;
-    padding-right: 20px;
-  }
-  
   .description {
     flex: 1;
   }
@@ -29,4 +24,25 @@
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
+  }
+
+  .room-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .room-images img {
+    top: 0;
+    left: 0;
+    display: block;
+    width: 250px;
+    max-height: 300px;
+    border-radius: 10%;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  .carousel-container {
+    flex: 0 0 50%;
+    padding-right: 20px;
   }

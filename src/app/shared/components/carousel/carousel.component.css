@@ -1,25 +1,28 @@
 .carousel-container {
-  position: relative;
-  margin: auto;
-  text-align: center;
-  width: 300px;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px #dce1e1;
-}
-
-.carousel-container img {
-  display: none;
-  /* width: 100%;
-  height: auto;
-  object-fit: cover; */
-  border-radius: 15px;
-}
-
-.carousel-container img.image-active {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px #dce1e1;
+    width: 100%;
+    padding-top: 100%; 
+    overflow: hidden;
+  }
+  
+  .carousel-container img {
+    display: none;
+    border-radius: 15px;
+  }
+  
+  .carousel-container img.image-active {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
-    width: 300px;
-    height: 300px;
-}
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
 
 .carousel-dot-container {
