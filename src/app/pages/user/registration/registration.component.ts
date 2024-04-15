@@ -33,7 +33,7 @@ onSubmit() {
   if (this.registerForm.valid && this.registerForm.value.password === this.registerForm.value.confirmPassword) {
     this.UserService.getByEmail(this.registerForm.value.email).subscribe({
       next: (user) => {
-        if (user) {
+        if (user && user.length > 0) {
           alert('A user with this email already exists');
         } else {
           this.UserService.register(this.registerForm.value).subscribe({
