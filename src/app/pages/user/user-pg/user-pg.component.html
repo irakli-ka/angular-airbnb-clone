@@ -1,11 +1,7 @@
 <div class="user-info">
     <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
-            <input matInput placeholder="First Name" formControlName="firstName">
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput placeholder="Last Name" formControlName="lastName">
+            <input matInput placeholder="User Name" formControlName="userName">
         </mat-form-field>
 
         <mat-form-field>

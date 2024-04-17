@@ -14,14 +14,27 @@ export class UserPgComponent implements OnInit {
 
   ngOnInit() {
     this.userInfoForm = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      phoneNumber: [''],
-      cardNumber: [''],
+      userName: [null],
+      email: [null],
+      phoneNumber: [null],
+      cardNumber: [null],
       changePassword: [false],
-      password: [''],
-      confirmPassword: ['']
+      password: [null],
+      confirmPassword: [null]
+    });
+
+    this.userService.getByEmail().subscribe({
+      next: (user: any) => {
+        console.log('User info - ', user[0]);
+        this.userInfoForm.patchValue({
+          userName: user[0].userName,
+          email: user[0].email,
+          phoneNumber: user[0].phone,
+        });
+      },
+      error: (error: any) => {
+        alert(`Failed to get user info${error}`);
+      }
     });
 
   }
