@@ -7,13 +7,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { HotelPgComponent } from './pages/hotel-pg/hotel-pg.component';
 import { TripPgComponent } from './pages/trip-pg/trip-pg.component';
 import { NotFoundPgComponent } from './pages/not-found-pg/not-found-pg.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'user', component: UserPgComponent },
+  { path: 'user', component: UserPgComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent},
   { path: 'hotel/:name/:id', component: HotelPgComponent},
-  { path: 'trip', component: TripPgComponent},
+  { path: 'trip', component: TripPgComponent, canActivate: [AuthGuard]},
   { path: '', component: HomeComponent},
   { path: '**', component: NotFoundPgComponent}
 ];
