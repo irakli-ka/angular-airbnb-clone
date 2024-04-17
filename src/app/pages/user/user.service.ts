@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { BASEAPIURL } from '../../../environments/environments';
 import { UserRegistration } from './registration/user.registration.model';
+import { User } from '../../shared/models/User.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,12 @@ export class UserService {
     if (!email) {
       email = localStorage.getItem('userEmail') as string;
     }
-    return this.http.post(`${BASEAPIURL}/api/user/getByEmail`, { email });
+    return this.http.post(`${BASEAPIURL}/api/user/getByEmail`, { email }).pipe(
+      tap((response: any) => {
+        const user = response[0];
+        localStorage.setItem('userId', user.id);
+      })
+    );
   }
 
   get isLoggedIn() {
@@ -43,8 +49,14 @@ export class UserService {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userEmail');
+    localStorage.clear();
     this.loggedIn.next(false);
+  }
+
+
+  updateUserData(userData: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.http.put(`${BASEAPIURL}/api/User/updateuserdata`, userData, { headers });
   }
 }
