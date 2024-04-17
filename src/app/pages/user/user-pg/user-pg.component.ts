@@ -38,7 +38,6 @@ export class UserPgComponent implements OnInit {
 
     this.userService.getByEmail().subscribe({
       next: (user: any) => {
-        console.log('User info - ', user[0]);
         this.userInfoForm.patchValue({
           userName: user[0].userName,
           email: user[0].email,
@@ -62,7 +61,6 @@ export class UserPgComponent implements OnInit {
 
   onSubmit() {
     if (this.userInfoForm.valid) {
-      console.log('User info form - ', this.userInfoForm.value);
       localStorage.setItem('cardNumber', this.userInfoForm.value.cardNumber);
       localStorage.setItem('userEmail', this.userInfoForm.value.email);
       
