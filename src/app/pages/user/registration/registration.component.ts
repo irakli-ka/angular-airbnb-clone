@@ -17,40 +17,40 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      userName: ['', Validators.required],
+      userName: ['', Validators.required, Validators.minLength(3), Validators.maxLength(20)],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       personalNumber: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      password: ['', Validators.required, Validators.minLength(6)],
+      confirmPassword: ['', Validators.required, ],
       gender: ['', Validators.required]
     });
   }
 
   
 
-onSubmit() {
-  if (this.registerForm.valid && this.registerForm.value.password === this.registerForm.value.confirmPassword) {
-    this.UserService.getByEmail(this.registerForm.value.email).subscribe({
-      next: (user) => {
-        if (user && user.length > 0) {
-          alert('A user with this email already exists');
-        } else {
-          this.UserService.register(this.registerForm.value).subscribe({
-            next: (response) => {
-              alert('Registration successful ' + response);
-              this.router.navigate(['/login']);
-            },
-            error: (error) => alert('Registration error ' + error),
-          });
-        }
-      },
-      error: (error) => alert('Error checking email ' + error),
-    });
-  } else if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
-    alert('Passwords do not match');
-  } else {
-    alert('Please fill in all fields correctly');
+  onSubmit() {
+    if (this.registerForm.valid && this.registerForm.value.password === this.registerForm.value.confirmPassword) {
+      this.UserService.getByEmail(this.registerForm.value.email).subscribe({
+        next: (user) => {
+          if (user && user.length > 0) {
+            alert('A user with this email already exists');
+          } else {
+            this.UserService.register(this.registerForm.value).subscribe({
+              next: (response) => {
+                alert('Registration successful ' + response);
+                this.router.navigate(['/login']);
+              },
+              error: (error) => alert('Registration error! try again! ' + error),
+            });
+          }
+        },
+        error: (error) => alert('Error checking email ' + error),
+      });
+    } else if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
+      alert('Passwords do not match');
+    } else {
+      alert('Please fill in all fields correctly');
+    }
   }
-}
 }
