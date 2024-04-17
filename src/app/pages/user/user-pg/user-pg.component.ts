@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-pg',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class UserPgComponent implements OnInit {
   userInfoForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit() {
     this.userInfoForm = this.formBuilder.group({
@@ -23,8 +24,9 @@ export class UserPgComponent implements OnInit {
       confirmPassword: ['']
     });
 
-    // Load the user's info into the form...
   }
+
+  
 
   onChangePassword() {
     const changePassword = this.userInfoForm.get('changePassword');

@@ -22,7 +22,10 @@ export class UserService {
     return this.http.post(`${BASEAPIURL}/api/user/registerUser`, userData);
   }
 
-  getByEmail(email: string): Observable<any> {
+  getByEmail(email?: string): Observable<any> {
+    if (!email) {
+      email = localStorage.getItem('userEmail') as string;
+    }
     return this.http.post(`${BASEAPIURL}/api/user/getByEmail`, { email });
   }
 
@@ -32,12 +35,16 @@ export class UserService {
 
   login(userData: {email: string, password: string}): Observable<any> {
     return this.http.post(`${BASEAPIURL}/api/User/LogIn`, userData).pipe(
-      tap(() => this.loggedIn.next(true))
+      tap(() => {
+        this.loggedIn.next(true);
+        localStorage.setItem('userEmail', userData.email);
+      })
     );
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('userEmail');
     this.loggedIn.next(false);
   }
 }
