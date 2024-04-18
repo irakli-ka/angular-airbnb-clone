@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../pages/user/user.service';
 import { Router } from '@angular/router';
-import { Amenity } from './amenities.model';
+import { Amenity } from './models/amenities.model';
 import { FillterService } from './fillter.service';
 import { HotelService } from '../../core/services/hotel.service';
 import { Observable } from 'rxjs';
