@@ -9,3 +9,6 @@
 <div class="container">
   <app-card-area [allHotels]="allHotels"></app-card-area>
 </div>
+<div *ngIf="noResultsFound" class="no-results-div">
+  <p class="no-results">No results found</p>
+</div>

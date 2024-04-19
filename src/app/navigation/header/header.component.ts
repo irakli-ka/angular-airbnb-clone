@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../pages/user/user.service';
 import { Router } from '@angular/router';
 import { Amenity } from './models/amenities.model';
-import { FillterService } from './fillter.service';
 import { HotelService } from '../../core/services/hotel.service';
 import { Observable } from 'rxjs';
 import { Params, ActivatedRoute } from '@angular/router';
+import { FilterService } from '../../core/services/fillter.service';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private filterService: FillterService,
+    private filterService: FilterService,
     private hotelService: HotelService,
     private route: ActivatedRoute
   ) {
@@ -50,6 +50,10 @@ export class HeaderComponent implements OnInit {
     this.filterService.getAmenities().subscribe((amenities: any) => {
       this.amenities = amenities;
     });
+
+    this.filterService.parameters$.subscribe((parameters: any) => {
+      this.searchForm.patchValue(parameters);
+    });
   }
 
   onLogout() {
@@ -59,7 +63,6 @@ export class HeaderComponent implements OnInit {
   onAdvancedSearch() {
     this.showAdvancedSearch = !this.showAdvancedSearch;
   }
-
 
   onSubmit() {
     const value = this.searchForm.value;
@@ -77,8 +80,6 @@ export class HeaderComponent implements OnInit {
         queryParamsHandling: null,
       }
     );
-    this.filterService.filterHotels(queryParams).subscribe((response: any) => {
-      console.log(response);
-    });
+    this.filterService.setParameters(queryParams);
   }
 }
