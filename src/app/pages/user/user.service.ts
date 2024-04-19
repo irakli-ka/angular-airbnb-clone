@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { BASEAPIURL } from '../../../environments/environments';
 import { UserRegistration } from './registration/user.registration.model';
-import { User } from '../../shared/models/User.model';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -59,4 +59,20 @@ export class UserService {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return this.http.put(`${BASEAPIURL}/api/User/updateuserdata`, userData, { headers });
   }
+ 
+  isTokenValid(token: string): boolean {
+    try {
+      const decodedToken = jwt_decode.jwtDecode(token);
+      const currentTime = Math.floor(Date.now() / 1000); // get current time in seconds
+
+      if (decodedToken && 'exp' in decodedToken && decodedToken.exp! > currentTime) {
+        return true; // token is not expired
+      } else {
+        return false; // token is expired or 'exp' does not exist
+      }
+    } catch (error) {
+      return false; // token is invalid
+    }
+  }
+
 }

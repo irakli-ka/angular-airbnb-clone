@@ -19,6 +19,7 @@ interface User {
 })
 
 export class UserPgComponent implements OnInit {
+
   userInfoForm: FormGroup = new FormGroup({});
   hidePassword: boolean = true;
 
@@ -57,6 +58,11 @@ export class UserPgComponent implements OnInit {
   onChangePassword() {
     const changePassword = this.userInfoForm.get('changePassword');
     changePassword?.setValue(!changePassword?.value);
+  }
+
+  deleteCardNumber() {
+    this.userInfoForm.get('cardNumber')?.setValue('');
+    localStorage.removeItem('cardNumber');
   }
 
   onSubmit() {
