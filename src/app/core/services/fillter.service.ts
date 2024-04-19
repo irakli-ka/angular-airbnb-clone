@@ -7,9 +7,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class FilterService {
-  private filteredHotelsSubject = new BehaviorSubject<any>(null);
-  filteredHotels$ = this.filteredHotelsSubject.asObservable();
-
   private parametersSubject = new BehaviorSubject<any>({});
   parameters$ = this.parametersSubject.asObservable();
 
@@ -21,10 +18,6 @@ export class FilterService {
 
   filterHotels(queryParams: any) {
     return this.http.get(`${BASEAPIURL}/api/Apartments/filter`, { params: queryParams });
-  }
-
-  setFilteredHotels(hotels: any) {
-    this.filteredHotelsSubject.next(hotels);
   }
 
   setParameters(params: any) {
