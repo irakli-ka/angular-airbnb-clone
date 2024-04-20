@@ -29,8 +29,10 @@ export class UserService {
     }
     return this.http.post(`${BASEAPIURL}/api/user/getByEmail`, { email }).pipe(
       tap((response: any) => {
-        const user = response[0];
-        localStorage.setItem('userId', user.id);
+        if (response && response.length > 0) {
+          const user = response[0];
+          localStorage.setItem('userId', user.id);
+        }
       })
     );
   }
