@@ -16,11 +16,11 @@ import { FilterService } from '../../core/services/fillter.service';
 export class HeaderComponent implements OnInit {
   searchForm: FormGroup = new FormGroup({});
 
-  showAdvancedSearch = false;
+  showAdvancedSearch: boolean = false;
   isLoggedIn: boolean = false;
   selectedAmenities: string[] = [];
   amenities: Amenity[] = [];
-  roomTypes$: Observable<string[]>;
+  roomTypes?: string[];
 
 
   constructor(
@@ -31,7 +31,9 @@ export class HeaderComponent implements OnInit {
     private hotelService: HotelService,
     private route: ActivatedRoute
   ) {
-    this.roomTypes$ = this.hotelService.roomTypes$;
+    this.hotelService.roomTypes$.subscribe(roomTypes => {
+      this.roomTypes = roomTypes;
+    });
   }
 
   ngOnInit() {
@@ -42,6 +44,8 @@ export class HeaderComponent implements OnInit {
       roomType: null,
       amenities: null,
     });
+    
+    this.hotelService.getAllHotels().subscribe();
 
     this.userService.isLoggedIn.subscribe((isLoggedIn: any) => {
       this.isLoggedIn = isLoggedIn;

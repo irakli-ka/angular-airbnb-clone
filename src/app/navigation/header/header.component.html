@@ -37,8 +37,8 @@
                         <mat-label>Room Type</mat-label>
                         <mat-select formControlName="roomType">
                             <mat-option [value]="null">None</mat-option>
-                            <mat-option *ngFor="let type of roomTypes$ | async" [value]="type">
-                                {{type}}
+                            <mat-option *ngFor="let roomType of roomTypes" [value]="roomType">
+                                {{roomType}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
