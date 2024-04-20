@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { HotelInfoService } from './hotel.info.service';
 import { ActivatedRoute } from '@angular/router';
 import { Hotel } from '../../shared/models/Hotel.model';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-hotel-pg',
@@ -9,6 +11,11 @@ import { Hotel } from '../../shared/models/Hotel.model';
   styleUrl: './hotel-pg.component.css',
 })
 export class HotelPgComponent {
+
+  today = new Date();
+  tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
+  startDate?: Date | null;
+  endDate?: Date | null;
   hotel: Hotel = {
     allImages: [],
     id: undefined,
@@ -46,10 +53,13 @@ export class HotelPgComponent {
     },
     owner: undefined,
   };
+cardNumber: any;
 
   constructor(
     private hotelInfoService: HotelInfoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -69,4 +79,44 @@ export class HotelPgComponent {
       });
     });
   }
+
+  calculateTotalPrice(roomPricePerNight: number): number {
+    if (!this.startDate || !this.endDate) {
+      return 0;
+    }
+    const millisecondsPerDay = 24 * 60 * 60 * 1000;
+    const numberOfDays = Math.round((this.endDate.getTime() - this.startDate.getTime()) / millisecondsPerDay);
+  
+    return numberOfDays * roomPricePerNight;
+  }
+
+  @ViewChild('paymentDialog') paymentDialog?: TemplateRef<any>;
+  reserveDialog(): void {
+    this.userService.isLoggedIn.subscribe(isLoggedIn => {
+      if (!isLoggedIn) {
+        alert('Please login to reserve a room!');
+        return;
+      } else {
+        const dialogRef = this.dialog.open(this.paymentDialog!, {
+          width: '500px',
+          height: 'auto'
+        });
+        this.cardNumber = localStorage.getItem('cardNumber');
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+      }
+    });
+  }
+
+  reserveRoom(hotelId: any, dialogRef: MatDialogRef<any>): void {
+    
+    
+    this.hotelInfoService.addReservation(hotelId.toString()).subscribe(() => {
+      alert('Room reserved successfully! Go to your trip page to see your reservations.');
+    });
+    dialogRef.close();
+  }
+  
 }

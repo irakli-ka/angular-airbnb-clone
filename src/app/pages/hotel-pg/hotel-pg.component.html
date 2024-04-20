@@ -7,10 +7,11 @@
             <h1>{{ hotel.name }}</h1>
             <div class="rating">{{ hotel.rating }} <i class="fa fa-star"></i></div>
             <p>{{ hotel.description }}</p>
+            <h2>Address</h2>
+    <p>{{ hotel.address?.country }} {{ hotel.address?.city }} {{ hotel.address?.state }}  {{ hotel.address?.street }}</p>
         </div>
     </div>
-    <h2>Address</h2>
-    <p>{{ hotel.address?.country }} {{ hotel.address?.city }} {{ hotel.address?.state }}  {{ hotel.address?.street }}</p>
+    
     <h2>Rooms</h2>
     <div *ngFor="let room of hotel?.rooms; let i = index" class="room">
         <h3 *ngIf="hotel.rooms.length > 1"> Room {{ i + 1 }}</h3>
@@ -18,10 +19,44 @@
         <p>Max Occupancy: {{ room.maxOccupancy }}</p>
         <p>Price: ${{ room.pricePerNight }} per night</p>
         <p>Amenities: {{ room.amenities.join(', ') }}</p>
+        <p>Owner: {{hotel.owner?.fullName}} - {{hotel.owner?.email}}</p>
         <div *ngIf="hotel.rooms.length > 1" class="room-images">
             <img *ngFor="let image of room.roomImages" [src]="image.url" alt="Room image">
         </div>
+        <div class="date-picker-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="startDatePicker" [min]="today" [max]="endDate" [(ngModel)]="startDate">
+                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+                <button mat-icon-button matSuffix (click)="startDate = null" class="clear-button">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="endDatePicker" [min]="startDate" [(ngModel)]="endDate">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+                <button mat-icon-button matSuffix (click)="endDate = null" class="clear-button">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+          <p>Total Price: ${{ calculateTotalPrice(room.pricePerNight) }} for selected dates</p>
+        <button mat-raised-button color="primary" (click)="reserveDialog()">Reserve</button>
     </div>
 </div>
+
+<ng-template #paymentDialog let-dialogRef="dialogRef">
+    <h2>Payment Information</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Card Number</mat-label>
+        <input matInput [(ngModel)]="cardNumber">
+    </mat-form-field>
+    <button mat-button (click)="reserveRoom(hotel.id, dialogRef)">Reserve Room</button>
+    <button mat-button (click)="dialogRef.close()">Close</button>
+  </ng-template>
 
 
