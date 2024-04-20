@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button'; 
 import {MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -25,7 +26,8 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ]
 })
 export class UserModule { }

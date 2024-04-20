@@ -1,5 +1,4 @@
 <div class="form-container">
-    <h1>Sign In</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
             <input matInput placeholder="Email" formControlName="email" required>
@@ -10,5 +9,7 @@
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit">Sign In</button>
+        <a class="no-account" mat-button color="primary" routerLink="/register">Don't have an account?</a>
     </form>
+    
 </div>

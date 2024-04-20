@@ -4,7 +4,11 @@
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    background-color: #e3d3d3
+    background-color: #e3d3d3;
+    background-image: url('https://i.imgur.com/dHzr6ny.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 form {
@@ -18,6 +22,11 @@ form {
     padding-right: 30px;
     padding-top: 50px;
     padding-bottom: 50px;
-    background-color: #fff
+    background-color: rgba(193, 193, 193, 0.6);
 }
 
+.no-account {
+    display: block;
+    margin-top: 10px;
+    text-decoration: underline;
+  }

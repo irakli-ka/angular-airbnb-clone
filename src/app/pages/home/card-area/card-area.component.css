@@ -43,14 +43,6 @@
     font-size: 16px;
 }
 
-.hotel-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    padding: 5px;
-    border-radius: 10px;
-}
-
 .hotel-card a {
     text-decoration: none;
     color: inherit;
@@ -76,4 +68,6 @@
   .carousel-container {
     width: 300px;
     height: 300px;
+    margin: 0 auto;
+    padding: 10px 20px 10px 20px;
   }

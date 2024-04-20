@@ -2,6 +2,7 @@
     padding-left: 50px;
     padding-right: 50px;
     border-top: 3px solid rgb(150, 150, 150);
+    background-color: #e2dfdf;
 }
 
 h2, p, mat-card-title {
