@@ -1,9 +1,11 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { HotelInfoService } from './hotel.info.service';
 import { ActivatedRoute } from '@angular/router';
 import { Hotel } from '../../shared/models/Hotel.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../user/user.service';
+import { HotelService } from '../../core/services/hotel.service';
+import { ReservationService } from '../../core/services/reservation.service';
+
 
 @Component({
   selector: 'app-hotel-pg',
@@ -11,7 +13,7 @@ import { UserService } from '../user/user.service';
   styleUrl: './hotel-pg.component.css',
 })
 export class HotelPgComponent {
-
+  //TODO second datepicker only available after inputing value in first datepicker
   today = new Date();
   tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
   startDate?: Date | null;
@@ -56,10 +58,11 @@ export class HotelPgComponent {
 cardNumber: any;
 
   constructor(
-    private hotelInfoService: HotelInfoService,
+    private hotelInfoService: HotelService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private reservationService: ReservationService
   ) {}
 
   ngOnInit(): void {
@@ -113,7 +116,7 @@ cardNumber: any;
   reserveRoom(hotelId: any, dialogRef: MatDialogRef<any>): void {
     
     
-    this.hotelInfoService.addReservation(hotelId.toString()).subscribe(() => {
+    this.reservationService.addReservation(hotelId.toString()).subscribe(() => {
       alert('Room reserved successfully! Go to your trip page to see your reservations.');
     });
     dialogRef.close();

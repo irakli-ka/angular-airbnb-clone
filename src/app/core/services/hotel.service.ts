@@ -21,4 +21,8 @@ export class HotelService {
       })
     );
   }
+
+  getHotelInfo(hotelId: string){
+    return this.http.get(`${BASEAPIURL}/get-by-id?id=${hotelId}`);
+  }
 }

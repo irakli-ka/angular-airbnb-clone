@@ -5,12 +5,14 @@ import { BASEAPIURL } from '../../../environments/environments';
 @Injectable({
   providedIn: 'root'
 })
-export class HotelInfoService {
+export class ReservationService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getHotelInfo(hotelId: string){
-    return this.http.get(`${BASEAPIURL}/get-by-id?id=${hotelId}`);
+  getTrips() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.http.get(`${BASEAPIURL}/get-reservations`, { headers });
   }
 
   addReservation(hotelId: any){
@@ -18,5 +20,4 @@ export class HotelInfoService {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return this.http.post(`${BASEAPIURL}/add-reservation`, { hotelId: hotelId }, { headers });
   }
-
 }

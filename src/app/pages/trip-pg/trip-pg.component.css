@@ -1,0 +1,21 @@
+.trip-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.trip-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.trip-card h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.trip-card p {
+    margin: 0;
+    margin-bottom: 10px;
+}
