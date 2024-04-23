@@ -1,7 +1,24 @@
-<div class="trip-container">
-  <h1>Your Trips</h1>
-  <div *ngFor="let hotel of hotels" class="trip-card">
-    <h2>{{ hotel.name }}</h2>
-    <p>{{ hotel.description }}</p>
+<h1 *ngIf="hotels.length > 0">Your reserved Trips</h1>
+<h1 *ngIf="hotels.length === 0">No trips currently</h1>
+<div class="hotel-row">
+  <div class="trip-container">
+    <div *ngFor="let hotel of hotels" class="trip-card">
+      <div class="card-content">
+        <div class="carousel-container">
+          <app-carousel [hotel]="hotel"></app-carousel>
+        </div>
+        <div class="text-container">
+          <h2>{{ hotel.name }}</h2>
+          <p>{{ hotel.description }}</p>
+          <p><i class="fa fa-star"></i>{{ hotel.rating }}</p>
+          <p>
+            {{ hotel.address?.country }} - {{ hotel.address?.city }} -
+            {{ hotel.address?.state }} - Postal code:
+            {{ hotel.address?.postalCode }}
+          </p>
+          <p>{{ hotel.owner?.fullName }} - {{ hotel.owner?.email }}</p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  

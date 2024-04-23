@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundPgComponent } from './pages/not-found-pg/not-found-pg.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HotelPgModule } from './pages/hotel-pg/hotel.pg.module'; 
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -28,7 +29,8 @@ import { HotelPgModule } from './pages/hotel-pg/hotel.pg.module';
     UserModule,
     HotelPgModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     provideAnimationsAsync()
