@@ -77,9 +77,8 @@ export class HeaderComponent implements OnInit {
     );
   
     this.router.navigate(
-      [], 
+      ['/'], 
       {
-        relativeTo: this.route,
         queryParams: queryParams,
         queryParamsHandling: null,
       }
