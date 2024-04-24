@@ -50,13 +50,19 @@
 </div>
 
 <ng-template #paymentDialog let-dialogRef="dialogRef">
-    <h2>Payment Information</h2>
-    <mat-form-field appearance="fill">
-        <mat-label>Card Number</mat-label>
-        <input matInput [(ngModel)]="cardNumber">
-    </mat-form-field>
-    <button mat-button (click)="reserveRoom(hotel.id, dialogRef)">Reserve Room</button>
-    <button mat-button (click)="dialogRef.close()">Close</button>
-  </ng-template>
+    <div class="payment-dialog">
+        <h2>Payment Information</h2>
+        <form #cardForm="ngForm" class="payment-form">
+            <mat-form-field appearance="fill" class="payment-field">
+                <mat-label>Card Number</mat-label>
+                <input matInput [(ngModel)]="cardNumber" name="cardNumber" required minlength="16" maxlength="16" #cardNumberField="ngModel">
+            </mat-form-field>
+            <div class="button-group">
+                <button mat-button (click)="reserveRoom(hotel.id, dialogRef)" [disabled]="!cardForm.valid">Reserve Room</button>
+                <button mat-button color="warn" (click)="dialogRef.close()">Close</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
 
 

@@ -18,6 +18,7 @@ interface User {
   styleUrls: ['./user-pg.component.css']
 })
 
+
 export class UserPgComponent implements OnInit {
 
   userInfoForm: FormGroup = new FormGroup({});
@@ -34,8 +35,8 @@ export class UserPgComponent implements OnInit {
       password: [null, Validators.required],
       confirmPassword: [null, Validators.required, ],
       gender: [null, Validators.required],
-      cardNumber: [null, [Validators.minLength(16), Validators.maxLength(16)]],
-    });
+      cardNumber: [null, [Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]],
+    }, { validators: passwordMatchValidator });
 
     this.userService.getByEmail().subscribe({
       next: (user: any) => {
@@ -90,5 +91,13 @@ export class UserPgComponent implements OnInit {
         }
       });
     }
+  }
+}
+
+function passwordMatchValidator(formGroup: FormGroup) {
+  const password: string = formGroup.get('password')?.value; 
+  const confirmPassword: string = formGroup.get('confirmPassword')?.value; 
+  if (password !== confirmPassword) {
+    formGroup.get('confirmPassword')?.setErrors({ NoPassswordMatch: true });
   }
 }

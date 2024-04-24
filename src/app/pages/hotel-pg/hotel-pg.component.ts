@@ -114,8 +114,11 @@ cardNumber: any;
   }
 
   reserveRoom(hotelId: any, dialogRef: MatDialogRef<any>): void {
-    
-    
+    if (!this.cardNumber || this.cardNumber.length !== 16 || !/^[0-9]*$/.test(this.cardNumber)) {
+      alert('Invalid card number. Please enter a 16 digit card number.');
+      return;
+    }
+
     this.reservationService.addReservation(hotelId.toString()).subscribe(() => {
       alert('Room reserved successfully! Go to your trip page to see your reservations.');
     });

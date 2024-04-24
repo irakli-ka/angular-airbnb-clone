@@ -51,6 +51,6 @@
       <input matInput formControlName="confirmPassword" [type]="hidePassword ? 'password' : 'text'" required />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Update</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!userInfoForm.valid">Update</button>
   </form>
 </div>
