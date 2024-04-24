@@ -36,13 +36,13 @@
         
             <mat-form-field appearance="fill">
                 <mat-label>End Date</mat-label>
-                <input matInput [matDatepicker]="endDatePicker" [min]="startDate" [(ngModel)]="endDate">
-                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <input matInput [matDatepicker]="endDatePicker" [min]="startDate" [(ngModel)]="endDate" [disabled]="!startDate">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker" [disabled]="!startDate"></mat-datepicker-toggle>
                 <mat-datepicker #endDatePicker></mat-datepicker>
-                <button mat-icon-button matSuffix (click)="endDate = null" class="clear-button">
-                    <mat-icon>delete</mat-icon>
+                <button mat-icon-button matSuffix (click)="endDate = null" class="clear-button" [disabled]="!startDate">
+                  <mat-icon>delete</mat-icon>
                 </button>
-            </mat-form-field>
+              </mat-form-field>
         </div>
           <p>Total Price: ${{ calculateTotalPrice(room.pricePerNight) }} for selected dates</p>
         <button mat-raised-button color="primary" (click)="reserveDialog()">Reserve</button>
