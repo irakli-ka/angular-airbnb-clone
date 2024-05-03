@@ -78,7 +78,6 @@ cardNumber: any;
             ),
           ],
         };
-        console.log(this.hotel);
       });
     });
   }
@@ -107,7 +106,6 @@ cardNumber: any;
         this.cardNumber = localStorage.getItem('cardNumber');
     
         dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
         });
       }
     });

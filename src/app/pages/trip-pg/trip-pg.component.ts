@@ -13,11 +13,9 @@ export class TripPgComponent {
   trips: any;
   hotels: Hotel[] = [];
   constructor(private reservation: ReservationService, private hotelService: HotelService) { }
-  //todo update html with carousel component and add more info about the hotel
   ngOnInit() {
     this.reservation.getTrips().subscribe((data) => {
       this.trips = data;
-      console.log(this.trips);
 
       this.trips.forEach((trip: any) => {
         this.hotelService.getHotelInfo(trip.hotelId).pipe(
