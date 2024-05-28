@@ -13,7 +13,6 @@ import { ReservationService } from '../../core/services/reservation.service';
   styleUrl: './hotel-pg.component.css',
 })
 export class HotelPgComponent {
-  //TODO second datepicker only available after inputing value in first datepicker
   today = new Date();
   tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
   startDate?: Date | null;
